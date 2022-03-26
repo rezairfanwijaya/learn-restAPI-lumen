@@ -4,9 +4,10 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 
+
 class Produk extends Model
 {
-    use Authenticatable, Authorizable, SoftDeletes;
+    
 
     /**
      * The attributes that are mass assignable.
