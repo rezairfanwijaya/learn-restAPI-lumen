@@ -36,7 +36,16 @@ class ProdukController extends Controller
     // function untuk update data
     public function update(Request $request, $id){
         // cari produk berdasarkan id
-        $produk = Produk::findOrFail($id);
+        // findOrFail() = mencari data berdasarkan id dan jika id tidak ditemukan akan mengirimkan error not found
+        // $produk = Produk::findOrFail($id);
+        
+        // selain pakai findOrFail, kita juga bisa menggunakan find() tapi untuk handle error jika id tidak terdaftar bisa dengan cara seperti ini
+        $produk = Produk::find($id);
+        if (!$produk) {
+            return response()->json([
+                'message' => "Produk dengan id $id tidak ditemukan"
+            ], 404);
+        }
 
         // filtering data
         $this->validate($request, [
