@@ -19,8 +19,11 @@ $router->get('/', function(){
 // router untuk post produk
 $router->post('/produk', 'ProdukController@create');
 
-// router untuk get produk
+// router untuk get all produk
 $router->get('/produk', 'ProdukController@index');
+
+// router untuk get produk berdasarkan id
+$router->get('/produk/{id}', 'ProdukController@show');
 
 // router untuk update produk
 $router->put('/produk/{id}', 'ProdukController@update');

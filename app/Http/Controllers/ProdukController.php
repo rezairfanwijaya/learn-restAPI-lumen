@@ -2,7 +2,8 @@
 namespace App\Http\Controllers;
 
 // panggil produk model
-use App\Produk;
+
+use App\Models\Produk;
 use Illuminate\Http\Request;
 
 class ProdukController extends Controller
@@ -29,6 +30,17 @@ class ProdukController extends Controller
     // function show data
     public function index(){
         $produk = Produk::all();
+        return response()->json($produk);
+    }
+
+    // function untuk tampil data berdasarkan id
+    public function show($id){
+        $produk = Produk::find($id);
+        if (!$produk) {
+            return response()->json([
+                'message' => "data dengan id $id tidak ditemukan"
+            ], 404);
+        }
         return response()->json($produk);
     }
 
