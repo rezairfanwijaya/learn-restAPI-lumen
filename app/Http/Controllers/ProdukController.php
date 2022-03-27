@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class ProdukController extends Controller
 {
+    // function untuk post data 
     public function create (Request $request)
     {
         // ambil data dari form dan lakukan filtering
@@ -23,5 +24,13 @@ class ProdukController extends Controller
         // kita kasih return berupa json dari data tadi
         return response()->json($produk);
     }
+
+
+    // function show data
+    public function index(){
+        $produk = Produk::all();
+        return response()->json($produk);
+    }
+
 }
 

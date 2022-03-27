@@ -15,4 +15,9 @@
 $router->get('/', function(){
     return "Hallo selamat datang di Lumen";
 });
+
+// router untuk post produk
 $router->post('/produk', 'ProdukController@create');
+
+// router untuk get produk
+$router->get('/produk', 'ProdukController@index');
