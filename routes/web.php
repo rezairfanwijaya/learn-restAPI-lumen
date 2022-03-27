@@ -24,3 +24,6 @@ $router->get('/produk', 'ProdukController@index');
 
 // router untuk update produk
 $router->put('/produk/{id}', 'ProdukController@update');
+
+// router untuk delete produk
+$router->delete('/produk/{id}', 'ProdukController@delete');
