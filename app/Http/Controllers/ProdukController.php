@@ -94,6 +94,7 @@ class ProdukController extends Controller
             'message' => "Produk dengan id $id berhasil dihapus"
         ]);
     }
+    
 
 }
 
