@@ -21,3 +21,6 @@ $router->post('/produk', 'ProdukController@create');
 
 // router untuk get produk
 $router->get('/produk', 'ProdukController@index');
+
+// router untuk update produk
+$router->put('/produk/{id}', 'ProdukController@update');

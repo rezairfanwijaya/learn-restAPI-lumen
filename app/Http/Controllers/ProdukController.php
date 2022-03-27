@@ -32,5 +32,27 @@ class ProdukController extends Controller
         return response()->json($produk);
     }
 
+
+    // function untuk update data
+    public function update(Request $request, $id){
+        // cari produk berdasarkan id
+        $produk = Produk::findOrFail($id);
+
+        // filtering data
+        $this->validate($request, [
+            'nama' => 'string',
+            'harga' => 'integer',
+            'warna' => 'string',
+            'kondisi' => 'in:Baru,Lama',
+            'deskripsi' => 'string|nullable',
+        ]);
+
+        // update data produk berdasarkan id
+        $produk->update($request->all());
+
+        // kasih return berupa json dari data tadi
+        return response()->json($produk);
+    }
+
 }
 
