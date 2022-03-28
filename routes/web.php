@@ -24,3 +24,6 @@ $router->delete('/produk/{id}', 'ProdukController@delete');
 
 // router untuk register user
 $router->post('/user/register', 'UserControlller@register');
+
+// router show alluser
+$router->get('/user', 'UserControlller@showUser');

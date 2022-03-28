@@ -28,4 +28,15 @@ class UserControlller extends Controller
             'data' => $user
         ], 200);
     } 
+    
+
+
+    // function show all user
+    public function showUser(){
+        $user = User::all();
+        return response()->json([
+            'status' => 'success',
+            'data' => $user
+        ], 200);
+    }
 }
