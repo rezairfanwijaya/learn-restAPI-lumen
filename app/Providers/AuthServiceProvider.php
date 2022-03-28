@@ -23,6 +23,8 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @return void
      */
+
+    //  ini adalah function inti untuk proses autentikasi user
     public function boot()
     {
         // Here you may define how you wish users to be authenticated for your Lumen
@@ -31,9 +33,18 @@ class AuthServiceProvider extends ServiceProvider
         // the User instance via an API token or any other method necessary.
 
         $this->app['auth']->viaRequest('api', function ($request) {
-            if ($request->input('api_token')) {
-                return User::where('api_token', $request->input('api_token'))->first();
+            // kita tampung token yang dimasukan user pada headers
+            $token = $request->header('token');
+
+            // cek apakah token ada di database ?
+            $user = User::where('token', $token)->first();
+            
+            // jika ada maka return user
+            if ($user) {
+                return new User();
             }
+
+            
         });
     }
 }

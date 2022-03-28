@@ -33,10 +33,15 @@ class Authenticate
      * @param  string|null  $guard
      * @return mixed
      */
+
+    //  method ini berfungsi untuk menghandle semua request yang masuk ke dalam aplikasi
+    // lebih detail nya function handle ini akan mengecek user ketika user mengakses api produk yang ada pada ProdukController.php
+    // jika user tidak memiliki token maka akan muncul error yang mengandung pesan "Unauthenticated."
+    // agar bisa berfungsi kita harus membuat constructor pada produk controller yang mengandung middleware Authenticate.php
     public function handle($request, Closure $next, $guard = null)
     {
         if ($this->auth->guard($guard)->guest()) {
-            return response('Unauthorized.', 401);
+            return response('Masukan token terlebih dahulu.', 401);
         }
 
         return $next($request);

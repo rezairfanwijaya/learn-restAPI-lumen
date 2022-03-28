@@ -8,6 +8,15 @@ use Illuminate\Http\Request;
 
 class ProdukController extends Controller
 {
+
+    // constructor untuk mengecek apakah user sudah login atau belum
+    // dan construktor ini akan memanggil middleware AuthserviceProvider yang berada pada file authserviceprovider.php di folder providers
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
+
+
     // function untuk post data 
     public function create (Request $request)
     {
